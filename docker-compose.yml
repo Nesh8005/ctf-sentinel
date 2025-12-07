@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  ctf-sentinel:
+    build: .
+    image: ctf-sentinel:latest
+    container_name: ctf-sentinel
+    volumes:
+      # Mount output directory
+      - ./output:/output
+      # Optional: Mount config for custom settings
+      - ./config.py:/app/config.py:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Override entrypoint for interactive use
+    # entrypoint: /bin/bash
+    # stdin_open: true
+    # tty: true
+
+    # Example: Domain scan
+    command: [ "--target-type", "domain", "--value", "example.com", "--output", "/output/report.json" ]
+
+    # Network mode for OSINT tools that need network access
+    network_mode: "host"
+
+    # Optional: Add capabilities for network tools like nmap
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+
+# Usage:
+# Build and run: docker-compose up
+# Build only: docker-compose build
+# Run with custom command: docker-compose run ctf-sentinel --target-type alias --value username
+# Interactive shell: docker-compose run ctf-sentinel /bin/bash

@@ -1,0 +1,26 @@
+# CTF Sentinel - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core CLI and argument parsing
+argparse>=1.4.0
+
+# HTTP requests and API interaction
+requests>=2.31.0
+
+# AI/NLP - spaCy and models
+spacy>=3.7.0
+
+# Rich terminal output
+rich>=13.7.0
+
+# Data manipulation (optional but recommended)
+pandas>=2.1.0
+
+# Testing framework
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Development tools
+black>=23.12.0
+flake8>=6.1.0
+mypy>=1.7.0
